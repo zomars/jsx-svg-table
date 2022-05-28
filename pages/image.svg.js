@@ -64,8 +64,8 @@ function Table() {
       <thead>
         <tr>
           {columns.map((column, index) => (
-            <th key={column} className={index > 0 ? "rotate" : ""}>
-              {column}
+            <th key={column}>
+              <div className={index > 0 ? "rotate" : ""}>{column}</div>
             </th>
           ))}
         </tr>
@@ -85,7 +85,7 @@ function Table() {
 
 function SVG() {
   return (
-    <svg fill="none" viewBox="0 0 1430 780" xmlns="http://www.w3.org/2000/svg">
+    <svg fill="none" viewBox="0 0 1430 800" xmlns="http://www.w3.org/2000/svg">
       <foreignObject width="100%" height="100%">
         <div xmlns="http://www.w3.org/1999/xhtml">
           <style>{`
@@ -107,6 +107,7 @@ function SVG() {
               max-width: 100%;
               overflow: auto;
               border: 1px solid var(--color-border-default);
+              line-height: 1.2;
             }
             td:first-child {
               text-align: left;
@@ -126,18 +127,17 @@ function SVG() {
               padding: 6px 13px;
               border: 1px solid var(--color-border-default);
             }
-            th.rotate {
+            .rotate {
               vertical-align: top;
               writing-mode: tb-rl;
-              transform: scale(-1, -1);
               white-space: nowrap;
               line-height: 1;
             }
-            /* Safari only hack */
-            @media not all and (min-resolution: 0.001dpcm) {
+            /* Apply to all BUT Safari hack */
+            @media all and (min-resolution: 0.001dpcm) {
               @supports (-webkit-appearance: none) {
-                th.rotate {
-                  -webkit-transform: none;
+                .rotate {
+                  transform: scale(-1, -1);
                 }
               }
             }
