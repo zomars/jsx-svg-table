@@ -2,6 +2,11 @@ import * as ReactDOMServer from "react-dom/server";
 
 export async function getServerSideProps({ res }) {
   res.setHeader("Content-Type", "image/svg+xml");
+  res.setHeader(
+    "Cache-Control",
+    "no-cache, no-store, private, must-revalidate"
+  );
+  res.setHeader("Vary", "image/Accept-Encoding+xml");
   res.write(ReactDOMServer.renderToStaticMarkup(<SVG />));
   res.end();
   return { props: {} };
