@@ -46,7 +46,7 @@ const columns = [
 const data =[
   ["@PeerRich", " ", " ", " ", " ", "👀", "👀", " ", " ", "✅", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
   ["@baileypumfleet", " ", " ", "✅", " ", "✅", "👀", " ", " ", " ", " ", " ", " ", " ", "✅", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
-  ["@zomars", " ", " ", "🥇 ✅", " ", "✅", "✅", "✅", " ", "✅", "✅", "✅", "✅", "✅", " ", "✅", "👀", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+  ["@zomars", " ", " ", "🥇 ✅", " ", "✅", "✅", "✅", " ", "✅", "✅", "✅", "✅", "✅", " ", "✅", "👀", " ", " ", " ", " ", " ", " ", " ", " ", "🥇 ✅", " "],
   ["@emrysal", "🥇 ✅", "🥇 ✅", " ", "✅", "✅", "✅", "✅", "✅", "✅", "✅", " ", " ", " ", "✅", "✅", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
   ["@alannnc", "✅", "🥇 ✅", " ", " ", "✅", "👀", "✅", " ", "✅", "✅", "🥇 ✅", "✅", "✅", "👀", "✅", "✅", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
   ["@agustif", " ", " ", "👀", " ", "✅", "✅", "👀", " ", "👀", "✅", "✅", "🥇 ✅", "👀", " ", "✅", "🥇 ✅", " ", " ", " ", "🥇 ✅", " ", " ", " ", " ", " ", " "],
@@ -65,9 +65,7 @@ function Table() {
         <tr>
           {columns.map((column, index) => (
             <th key={column} className={index > 0 ? "rotate" : ""}>
-              <div>
-                <span>{column}</span>
-              </div>
+              {column}
             </th>
           ))}
         </tr>
@@ -122,25 +120,18 @@ function SVG() {
             }
             table th {
               vertical-align: bottom;
-              padding: 13px 6px;
             }
+            table th,
             table td {
               padding: 6px 13px;
               border: 1px solid var(--color-border-default);
             }
             th.rotate {
-              vertical-align: middle;
-              height: 180px;
+              vertical-align: top;
+              writing-mode: tb-rl;
+              transform: rotate(-180deg);
               white-space: nowrap;
-              border: 1px solid transparent;
-              border-bottom: 1px solid var(--color-border-default);
-            }
-            th.rotate > div {
-              transform: translate(0, 75px) rotate(270deg);
-              width: 30px;
-            }
-            th.rotate > div > span {
-              padding: 5px 10px;
+              line-height: 1;
             }
           `}</style>
           <div id="wrapper">
