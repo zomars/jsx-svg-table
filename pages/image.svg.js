@@ -129,9 +129,17 @@ function SVG() {
             th.rotate {
               vertical-align: top;
               writing-mode: tb-rl;
-              transform: rotate(-180deg);
+              transform: scale(-1, -1);
               white-space: nowrap;
               line-height: 1;
+            }
+            /* Safari only hack */
+            @media not all and (min-resolution: 0.001dpcm) {
+              @supports (-webkit-appearance: none) {
+                th.rotate {
+                  -webkit-transform: none;
+                }
+              }
             }
           `}</style>
           <div id="wrapper">
