@@ -12,7 +12,15 @@ export default function Home() {
       </Head>
 
       <main>
-        <img src="/image.svg" alt="" />
+        <section>
+          <h1>Light version</h1>
+          <img src="/image.svg" alt="" />
+        </section>
+        <hr/>
+        <section style={{backgroundColor: "black"}}>
+          <h1 style={{color: 'white'}}>Dark version</h1>
+          <img src="/image.svg?dark=true" alt="" />
+        </section>
       </main>
 
       <footer className={styles.footer}>

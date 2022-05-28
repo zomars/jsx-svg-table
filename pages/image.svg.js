@@ -1,13 +1,13 @@
 import * as ReactDOMServer from "react-dom/server";
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({ res, query }) {
   res.setHeader("Content-Type", "image/svg+xml");
   res.setHeader(
     "Cache-Control",
     "no-cache, no-store, private, must-revalidate"
   );
   res.setHeader("Vary", "image/Accept-Encoding+xml");
-  res.write(ReactDOMServer.renderToStaticMarkup(<SVG />));
+  res.write(ReactDOMServer.renderToStaticMarkup(<SVG dark={!!query.dark} />));
   res.end();
   return { props: {} };
 }
@@ -83,7 +83,7 @@ function Table() {
   );
 }
 
-function SVG() {
+function SVG({dark}) {
   return (
     <svg fill="none" viewBox="0 0 1430 800" xmlns="http://www.w3.org/2000/svg">
       <foreignObject width="100%" height="100%">
@@ -108,6 +108,7 @@ function SVG() {
               overflow: auto;
               border: 1px solid var(--color-border-default);
               line-height: 1.2;
+              ${dark ? 'color: white' : 'color: black'}
             }
             td:first-child {
               text-align: left;
